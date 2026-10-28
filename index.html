@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SkillBridge — Evidence-Backed Placement & Career-Readiness</title>
+  <meta name="description" content="A skill-based placement platform designed to help students showcase real capabilities beyond academic CGPA cutoffs.">
+  
+  <!-- Tailwind CSS CDN (with local styles fallback) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eef2ff',
+              100: '#e0e7ff',
+              500: '#6366f1',
+              600: '#4f46e5',
+              700: '#4338ca',
+              900: '#312e81',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- SkillBridge Design System Styles -->
+  <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body class="bg-slate-50 text-slate-900 min-h-screen antialiased selection:bg-indigo-500 selection:text-white">
+  
+  <div id="app">
+    <!-- File Protocol Advice Banner (automatically displayed only if opened directly via file://) -->
+    <div id="file-protocol-warning" class="hidden bg-amber-50 border-b border-amber-200 text-amber-900 text-xs px-4 py-2.5 text-center font-medium">
+      ⚠️ Notice: You opened SkillBridge via local file path (<code class="bg-amber-100 px-1 rounded">file://</code>). If your browser blocks local ES modules, simply run <code class="bg-amber-100 px-1 rounded font-bold">python serve.py</code> or double-click <code class="bg-amber-100 px-1 rounded font-bold">run_skillbridge.bat</code> to launch at <a href="http://localhost:3000" class="underline font-bold text-indigo-700">http://localhost:3000</a>.
+    </div>
+
+    <!-- Initial Loading State -->
+    <div class="min-h-screen flex items-center justify-center bg-slate-50">
+      <div class="text-center p-8">
+        <div class="w-12 h-12 rounded-2xl bg-indigo-600 text-white flex items-center justify-center mx-auto mb-4 animate-pulse">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"></path></svg>
+        </div>
+        <h2 class="text-base font-extrabold text-slate-900">Loading SkillBridge...</h2>
+        <p class="text-xs text-slate-500 mt-1">Initializing evidence-backed placement workspace</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    if (window.location.protocol === 'file:') {
+      const banner = document.getElementById('file-protocol-warning');
+      if (banner) banner.classList.remove('hidden');
+    }
+  </script>
+
+  <!-- Main ES Module Script -->
+  <script type="module" src="./js/app.js"></script>
+</body>
+</html>
